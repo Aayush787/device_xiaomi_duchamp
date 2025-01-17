@@ -32,6 +32,7 @@ lib_fixups: lib_fixups_user_type = {
     ('libtflite_mtk',
      'vendor.mediatek.hardware.apuware.utils-V1-ndk',
      'vendor.mediatek.hardware.apuware.utils@2.0',
+     'vendor.mediatek.hardware.camera.isphal-V1-ndk',
      'vendor.mediatek.hardware.videotelephony-V1-ndk'): lib_fixup_vendor_suffix,
 }
 
@@ -224,6 +225,11 @@ blob_fixups: blob_fixups_user_type = {
 
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libmnl.so', 'libmnl-v34.so'),
+
+    ('system_ext/lib64/libcamera_algoup_jni.xiaomi.so',
+     'system_ext/lib64/libcamera_mianode_jni.xiaomi.so',
+     'system_ext/lib64/libcamera_ispinterface_jni.xiaomi.so'): blob_fixup()
+        .add_needed('libgui_shim_miuicamera.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
