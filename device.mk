@@ -142,8 +142,18 @@ PRODUCT_VENDOR_LINKER_CONFIG_FRAGMENTS += \
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/media,$(TARGET_COPY_OUT_VENDOR)/etc)
 
+<<<<<<< HEAD
 # MTK GED
 $(call soong_config_set_bool,libgui,support_mtk_ged_kpi,true)
+=======
+
+# MiuiCamera
+PRODUCT_PACKAGES += \
+    MiuiCameraOverlayIcon
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/permissions/privapp-permissions-miuicamera.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-miuicamera.xml
+>>>>>>> e3f742f (duchamp: Import MiuiCamera)
 
 # Lineage Health
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
@@ -346,6 +356,10 @@ PRODUCT_SOONG_NAMESPACES += \
 # Thermal files
 PRODUCT_COPY_FILES += \
     $(call find-copy-subdir-files,*,$(DEVICE_PATH)/configs/thermals/,$(TARGET_COPY_OUT_ODM)/etc)
+
+# Sysconfig
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/permissions/miuicamera-hiddenapi-package-allowlist.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/sysconfig/miuicamera-hiddenapi-package-allowlist.xml
 
 # Thermal
 PRODUCT_PACKAGES += \
