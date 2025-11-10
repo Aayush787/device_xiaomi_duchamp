@@ -281,6 +281,10 @@ ro.vendor.num_md_protocol=2
 ro.vendor.sim_me_lock_mode=3
 ro.vendor.vt_hevc_support=1
 
+# ScrollOptimizer
+persist.sys.perf.scroll_opt=true
+persist.sys.perf.scroll_opt.heavy_app=1
+
 # Sensors
 ro.vendor.mtk.sensor.support=yes
 ro.vendor.sensors.xiaomi.double_tap=true
