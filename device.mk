@@ -143,6 +143,9 @@ $(call soong_config_set,XIAOMI_BIOMETRICS_FINGERPRINT,IMPL_VER,V2)
 PRODUCT_PACKAGES += \
     android.hardware.location.gps.prebuilt.xml
 
+# MTK GED
+$(call soong_config_set_bool,libgui,support_mtk_ged_kpi,true)
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
@@ -389,3 +392,4 @@ PRODUCT_PACKAGES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/duchamp/duchamp-vendor.mk)
+
