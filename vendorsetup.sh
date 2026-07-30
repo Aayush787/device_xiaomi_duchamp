@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Clonning Private keys"
-croot && git clone https://github.com/ProjectMatrixx/vendor_matrixx-priv_keys-template vendor/matrixx-priv/keys
-cd vendor/matrixx-priv/keys
+croot && git clone https://github.com/ProjectMatrixx/vendor_matrixx-priv_keys-template vendor/lineage-priv/keys
+cd vendor/lineage-priv/keys
 ./keys.sh
 cd ../../..
 
