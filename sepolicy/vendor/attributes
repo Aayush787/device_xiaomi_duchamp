@@ -22,3 +22,8 @@ attribute hal_mfidoca_server;
 attribute vendor_hal_citsensorservice_xiaomi;
 attribute vendor_hal_citsensorservice_xiaomi_client;
 attribute vendor_hal_citsensorservice_xiaomi_server;
+
+# Lineage Health (charging control)
+attribute hal_lineage_health;
+attribute hal_lineage_health_client;
+attribute hal_lineage_health_server;

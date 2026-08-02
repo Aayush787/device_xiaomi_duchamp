@@ -15,3 +15,6 @@ type hal_mtdservice_service, protected_service, service_manager_type, hal_servic
 
 # Sensor
 type vendor_hal_citsensorservice_xiaomi_service, protected_service, service_manager_type, hal_service_type;
+
+# Health
+type hal_lineage_health_service, service_manager_type;

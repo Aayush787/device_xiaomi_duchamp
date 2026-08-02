@@ -18,3 +18,6 @@ vendor.xiaomi.hardware.aidl.mtdservice.IMTService/default        u:object_r:hal_
 
 # Sensor
 vendor.xiaomi.sensor.citsensorservice.ICitSensorService/default   u:object_r:vendor_hal_citsensorservice_xiaomi_service:s0
+
+# Health
+vendor.lineage.health.IChargingControl/default u:object_r:hal_lineage_health_service:s0

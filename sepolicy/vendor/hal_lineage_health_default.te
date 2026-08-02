@@ -1,2 +1,9 @@
+type hal_lineage_health_default, domain;
+type hal_lineage_health_default_exec, exec_type, vendor_file_type, file_type;
+
+init_daemon_domain(hal_lineage_health_default)
+binder_use(hal_lineage_health_default)
+add_service(hal_lineage_health_default, hal_lineage_health_service)
+
 rw_dir_file(hal_lineage_health_default, sysfs_batteryinfo)
 rw_dir_file(hal_lineage_health_default, sysfs_power_supply)
