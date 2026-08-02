@@ -18,6 +18,9 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 $(call soong_config_set,surfaceflinger,frame_rate_category_high,120)
 $(call soong_config_set,surfaceflinger,frame_rate_category_min,60)
 
+# Dolby
+$(call inherit-product, $(DEVICE_PATH)/dolby/dolby.mk)
+
 # A/B
 ifneq ($(WITH_GMS),true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
@@ -337,6 +340,10 @@ PRODUCT_COPY_FILES += \
 
 # Shipping API level
 PRODUCT_SHIPPING_API_LEVEL := 34
+
+# Dolby-specific Settings
+PRODUCT_PACKAGES += \
+    dolby
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
