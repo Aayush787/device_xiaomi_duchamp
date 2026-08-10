@@ -10,10 +10,10 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device makefile.
 $(call inherit-product, device/xiaomi/duchamp/device.mk)
 
-# Inherit some common HalcyonOS stuff.
-$(call inherit-product, vendor/halcyon/config/common.mk)
+# Inherit some common LumineDroid-AOSP stuff.
+$(call inherit-product, vendor/lumine/config/common_full_phone.mk)
 
-PRODUCT_NAME := halcyon_duchamp
+PRODUCT_NAME := lumine_duchamp
 PRODUCT_DEVICE := duchamp
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_BRAND := POCO
@@ -28,6 +28,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=POCO/duchamp_global/duchamp:16/BP2A.250605.031.A3/OS3.0.6.0.WNLMIXM:user/release-keys \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
 
-# Some Halcyon Flags
-TARGET_SUPPORTS_GOOGLE_RECORDER := true
-
+# Lumine flags
+LUMINE_MAINTAINER := Aayush787

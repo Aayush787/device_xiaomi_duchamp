@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/halcyon_duchamp.mk
+    $(LOCAL_DIR)/lumine_duchamp.mk

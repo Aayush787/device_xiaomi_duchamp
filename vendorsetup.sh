@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Clonning Private keys"
-croot && git clone https://github.com/ProjectMatrixx/vendor_matrixx-priv_keys-template vendor/enchanted/keys
-cd vendor/enchanted/keys
+croot && git clone https://github.com/ProjectMatrixx/vendor_matrixx-priv_keys-template vendor/lumine-priv/keys
+cd vendor/lumine-priv/keys
 ./keys.sh
 cd ../../..
 
@@ -19,7 +19,7 @@ git cherry-pick 92549f3b3ed77c98ca4bc7316bfd2f0662ac11f9
 cd ../../..
 
 echo "Clonning Vendor Tree"
-git clone -b HOS2.0.209 https://gitlab.com/ash737/vendor_xiaomi_duchamp.git vendor/xiaomi/duchamp
+git clone -b lineage-23.2 https://github.com/mt6897-devs/vendor_xiaomi_duchamp.git
 
 echo "Clonning kernel"
 git clone -b bka https://github.com/Evolution-X-Devices/device_xiaomi_duchamp-kernel.git device/xiaomi/duchamp-kernel
