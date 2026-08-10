@@ -19,7 +19,7 @@ git cherry-pick 92549f3b3ed77c98ca4bc7316bfd2f0662ac11f9
 cd ../../..
 
 echo "Clonning Vendor Tree"
-git clone -b lineage-23.2 https://github.com/mt6897-devs/vendor_xiaomi_duchamp.git
+git clone -b lineage-23.2 https://github.com/mt6897-devs/vendor_xiaomi_duchamp.git vendor/xiaomi/duchamp
 
 echo "Clonning kernel"
 git clone -b bka https://github.com/Evolution-X-Devices/device_xiaomi_duchamp-kernel.git device/xiaomi/duchamp-kernel
