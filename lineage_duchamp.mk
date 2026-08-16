@@ -28,3 +28,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildFingerprint=POCO/duchamp_global/duchamp:16/BP2A.250605.031.A3/OS3.0.6.0.WNLMIXM:user/release-keys \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
 
+# Flags
+EXTRA_UDFPS_ANIMATIONS := true
+TARGET_HAS_UDFPS := true
