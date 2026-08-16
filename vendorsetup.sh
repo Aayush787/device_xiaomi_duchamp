@@ -35,3 +35,6 @@ git clone -b lineage-23.2 https://github.com/mt6897-devs/hardware_xiaomi.git har
 
 echo "Exporting prebuilt headers path"
 export TARGET_PREBUILT_KERNEL_HEADERS=device/xiaomi/duchamp-kernel/kernel-uapi-headers.tar.gz
+
+echo "Cloning NotGameTurbo"
+git clone -b 16.0 https://github.com/crdroidandroid/android_packages_apps_NotGameTurbo.git packages/apps/NotGameTurbo

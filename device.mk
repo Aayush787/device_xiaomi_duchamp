@@ -400,3 +400,6 @@ PRODUCT_PACKAGES += \
 
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/duchamp/duchamp-vendor.mk)
+
+# Game Turbo
+$(call inherit-product-if-exists, packages/apps/NotGameTurbo/notgameturbo.mk)
