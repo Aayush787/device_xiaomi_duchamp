@@ -13,3 +13,8 @@ allow system_app sysfs_power_supply:dir search;
 allow system_app sysfs_power_supply:file { write setattr };
 allow system_app self:netlink_kobject_uevent_socket { bind create read setopt };
 allow system_app sysfs_power_supply:file { write setattr };
+
+# Core Control
+allow system_app vendor_sysfs_corecontrol:dir search;
+allow system_app vendor_sysfs_corecontrol:file { getattr open read write };
+allow system_app vendor_sysfs_corecontrol:file rw_file_perms;

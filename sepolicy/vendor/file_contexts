@@ -88,3 +88,6 @@
 # Turbo Charge
 /sys/class/power_supply/battery/constant_charge_current                                                u:object_r:sysfs_power_supply:s0
 /sys/class/power_supply/usb/online                                                                     u:object_r:sysfs_power_supply:s0
+
+# Core Control
+/sys/devices/system/cpu/cpu[0-7]/online					       u:object_r:vendor_sysfs_corecontrol:s0

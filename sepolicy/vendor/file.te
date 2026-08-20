@@ -23,3 +23,6 @@ type proc_compaction_proactiveness, fs_type, proc_type;
 
 # Power
 type vendor_touchfeature_device, dev_type;
+
+# Core Control
+type vendor_sysfs_corecontrol, fs_type, sysfs_type;
