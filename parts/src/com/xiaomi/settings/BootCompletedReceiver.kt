@@ -19,6 +19,7 @@ import com.xiaomi.settings.display.ColorService
 import com.xiaomi.settings.thermal.ThermalAutoModeService
 import com.xiaomi.settings.thermal.ThermalProfileFragment
 import com.xiaomi.settings.utils.FileUtils
+import com.xiaomi.settings.turbocharging.TurboChargingService
 
 /** Everything begins at boot. */
 class BootCompletedReceiver : BroadcastReceiver() {
@@ -42,6 +43,10 @@ class BootCompletedReceiver : BroadcastReceiver() {
     private fun onLockedBootCompleted(context: Context) {
         // Display
         context.startServiceAsUser(Intent(context, ColorService::class.java), UserHandle.CURRENT)
+
+        // Start TurboChargingService
+        val turboChargingIntent = Intent(context, TurboChargingService::class.java)
+        context.startService(turboChargingIntent)
 
         // Override HDR types to enable Dolby Vision
         val displayManager = context.getSystemService(DisplayManager::class.java)

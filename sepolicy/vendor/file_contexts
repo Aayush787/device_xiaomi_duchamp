@@ -84,3 +84,7 @@
 
 # Vibrator
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.vibrator\.service                                u:object_r:hal_vibrator_default_exec:s0
+
+# Turbo Charge
+/sys/class/power_supply/battery/constant_charge_current                                                u:object_r:sysfs_power_supply:s0
+/sys/class/power_supply/usb/online                                                                     u:object_r:sysfs_power_supply:s0
