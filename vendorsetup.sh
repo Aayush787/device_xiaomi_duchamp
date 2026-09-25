@@ -1,5 +1,11 @@
 #!/bin/bash
 
+echo "Clonning Private keys"
+croot && git clone -b 16 https://github.com/ProjectMatrixx/vendor_matrixx-priv_keys-template.git vendor/infinity-priv/keys
+cd vendor/infinity-priv/keys
+./keys.sh
+cd ../../..
+
 echo "Unlock 4K 60FPS Cam Recording"
 cd p*/a*/Aperture
 git fetch https://github.com/Nothing-2A/android_packages_apps_Aperture.git
