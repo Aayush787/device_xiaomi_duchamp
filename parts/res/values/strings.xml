@@ -28,4 +28,15 @@
     <string name="thermalprofile_auto_mode_summary">Automatically switch to Battery Saver mode when screen turns off and restore previous mode when screen turns on.</string>
     <string name="thermalprofile_auto_mode_note">Note: Higher Boost frequencies (GPU over 740MHz and CPU boost frequencies) are available only in Game and Performance mode.</string>
     <string name="thermalprofile_current_mode">Current mode</string>
+
+    <!-- Charge Speed Limit -->
+    <string name="turbo_charge_title">Charge Speed Limit</string>
+    <string name="turbo_enable_title">Enable Charge Speed Limit</string>
+    <string name="turbo_charge_summary">Enable Charge Speed Limit for different charging modes up to 67W</string>
+    <string name="turbo_charge_current_pref_title">Charging wattage</string>
+    <string name="turbo_mode_one">18W</string>
+    <string name="turbo_mode_two">30W</string>
+    <string name="turbo_mode_three">67W</string>
+    <string name="turbo_charge_tile_label">Charge Speed Limit</string>
+    <string name="turbo_charge_tile_content_description">Toggle Charge Speed Limit</string>
 </resources>
