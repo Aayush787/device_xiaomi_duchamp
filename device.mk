@@ -403,3 +403,5 @@ PRODUCT_PACKAGES += \
 # Inherit the proprietary files
 $(call inherit-product, vendor/xiaomi/duchamp/duchamp-vendor.mk)
 
+# Inherit Dolby
+$(call inherit-product, hardware/dolby/dolby.mk)
