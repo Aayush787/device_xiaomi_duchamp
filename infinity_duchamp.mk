@@ -10,14 +10,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device makefile.
 $(call inherit-product, device/xiaomi/duchamp/device.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Infinity-X stuff.
+$(call inherit-product, vendor/infinity/config/common_full_phone.mk)
 
 PRODUCT_BRAND := POCO
 PRODUCT_DEVICE := duchamp
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := 2311DRK48G
-PRODUCT_NAME := lineage_duchamp
+PRODUCT_NAME := infinity_duchamp
 
 PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
@@ -26,3 +26,14 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="missi-user 16 BP2A.250605.031.A3 OS3.0.6.0.WNLMIXM release-keys" \
     BuildFingerprint=POCO/duchamp_global/duchamp:16/BP2A.250605.031.A3/OS3.0.6.0.WNLMIXM:user/release-keys \
     DeviceProduct=duchamp_global
+
+# Infinity-X Specific Flags
+INFINITY_BUILD_TYPE := UNOFFICIAL
+INFINITY_MAINTAINER := Aayush787
+WITH_GAPPS := true
+SURFACE_FLINGER_BOOST := true
+TARGET_OPTIMIZED_DEXOPT := true
+TARGET_BOOT_ANIMATION_RES := 1080
+TARGET_SUPPORTED_REFRESH_RATES := 60,90,120
+TARGET_HAS_UDFPS := true
+USE_REALITY_ENGINE := false
