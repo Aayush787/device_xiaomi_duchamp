@@ -12,12 +12,6 @@ git fetch https://github.com/Nothing-2A/android_packages_apps_Aperture.git
 git cherry-pick 9509277efc852ad8bdcce204e0d9cfe104b6d190
 cd ../../..
 
-echo "Fixup! L2CAP and A2DP offload coex mechanism for MTK"
-cd packages/modules/Bluetooth
-git fetch https://github.com/mt6897-devs/packages_modules_Bluetooth.git
-git cherry-pick bea05a62eef1fcc37e5a10d476580a017a0bd32e
-cd ../../..
-
 echo "Provide libbase-v34"
 cd hardware/lineage/compat
 git fetch https://github.com/mt6897-devs/hardware_lineage_compat.git
