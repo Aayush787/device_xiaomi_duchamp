@@ -1,3 +1,17 @@
+#!/bin/bash
+
+echo "Unlock 4K 60FPS Cam Recording"
+cd p*/a*/Aperture
+git fetch https://github.com/Nothing-2A/android_packages_apps_Aperture.git
+git cherry-pick 9509277efc852ad8bdcce204e0d9cfe104b6d190
+cd ../../..
+
+echo "Fixup! L2CAP and A2DP offload coex mechanism for MTK"
+cd packages/modules/Bluetooth
+git fetch https://github.com/Aayush787/packages_modules_Bluetooth.git
+git cherry-pick 7bbb816bde74d00f3017e1f186f134fb2dd8ff68
+cd ../../..
+
 echo "Provide libbase-v34"
 cd hardware/lineage/compat
 git fetch https://github.com/mt6897-devs/hardware_lineage_compat.git
