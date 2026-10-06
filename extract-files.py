@@ -20,6 +20,7 @@ from extract_utils.main import (
 namespace_imports = [
     'device/xiaomi/duchamp',
     'hardware/mediatek',
+    'hardware/mediatek/libion_mtk',
     'hardware/xiaomi'
 ]
 
