@@ -55,11 +55,12 @@ class BootCompletedReceiver : BroadcastReceiver() {
     }
 
     private fun onLockedBootCompleted(context: Context) {
-        // Start TurboChargingService
-        context.startService(Intent(context, TurboChargingService::class.java))
-
         // Display
         ColorService.startService(context)
+
+        // Start TurboChargingService
+        val turboChargingIntent = Intent(context, TurboChargingService::class.java)
+        context.startService(turboChargingIntent)
     }
 
     private fun restoreThermalProfile(context: Context) {
