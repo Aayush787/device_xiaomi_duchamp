@@ -226,6 +226,9 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .replace_needed('libui.so', 'libui-v34.so'),
 
+    'system_ext/app/EngineerMode/EngineerMode.apk': blob_fixup()
+        .apktool_patch('blob-patches/EngineerMode/'),
+
     'vendor/etc/init/tee-supplicant.rc': blob_fixup()
         .regex_replace('chown system system /dev/ufs-bsg0', 'chown root system /dev/ufs-bsg0'),
 
