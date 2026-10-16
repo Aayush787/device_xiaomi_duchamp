@@ -75,19 +75,17 @@
         <activity
             android:name=".TileEntryActivity"
             android:label="@string/app_title"
-            android:exported="true"
-            android:theme="@style/Theme.SubSettingsBase">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
 
-    <!-- Turbo Charging -->
+        <!-- Turbo Charging -->
         <activity
             android:name=".turbocharging.TurboChargingActivity"
             android:exported="false"
-            android:label="@string/turbo_charge_title"
-            android:theme="@style/Theme.SubSettingsBase">
+            android:label="@string/turbo_charge_title">
             <intent-filter>
                 <action android:name="com.android.settings.action.IA_SETTINGS" />
             </intent-filter>
@@ -105,4 +103,3 @@
         </service>
     </application>
 </manifest>
-

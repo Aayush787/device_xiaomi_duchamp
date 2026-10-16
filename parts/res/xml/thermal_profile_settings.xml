@@ -1,35 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/thermalprofile_title">
 
-    <!-- Radio-style profile selector -->
-    <PreferenceCategory android:key="thermal_profile_category">
+    <com.android.settingslib.widget.TopIntroPreference
+        android:key="thermal_top_intro"
+        android:title="@string/thermalprofile_summary"
+        android:persistent="false" />
 
-        <Preference
+    <!-- M3 Radio-style profile selector -->
+    <PreferenceCategory
+        android:key="thermal_profile_category"
+        android:title="@string/thermalprofile_category_profiles">
+
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
             android:key="thermal_profile_default"
             android:title="@string/thermalprofile_default"
+            android:summary="@string/thermalprofile_default_summary"
+            android:icon="@drawable/ic_thermal_default"
             android:persistent="false" />
 
-        <Preference
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
             android:key="thermal_profile_performance"
             android:title="@string/thermalprofile_performance"
+            android:summary="@string/thermalprofile_performance_summary"
+            android:icon="@drawable/ic_thermal_performance"
             android:persistent="false" />
 
-        <Preference
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
             android:key="thermal_profile_battery"
             android:title="@string/thermalprofile_battery"
+            android:summary="@string/thermalprofile_battery_summary"
+            android:icon="@drawable/ic_thermal_battery"
             android:persistent="false" />
 
-        <Preference
+        <com.android.settingslib.widget.SelectorWithWidgetPreference
             android:key="thermal_profile_game"
             android:title="@string/thermalprofile_game"
+            android:summary="@string/thermalprofile_game_summary"
+            android:icon="@drawable/ic_thermal_gaming"
             android:persistent="false" />
 
     </PreferenceCategory>
 
     <!-- Auto Mode -->
-    <PreferenceCategory android:key="thermal_auto_category">
+    <PreferenceCategory
+        android:key="thermal_auto_category"
+        android:title="@string/thermalprofile_category_automation">
 
         <SwitchPreferenceCompat
             android:key="thermal_auto_mode"
@@ -37,12 +58,11 @@
             android:summary="@string/thermalprofile_auto_mode_summary"
             android:defaultValue="false" />
 
-        <Preference
-            android:key="thermal_auto_mode_note"
-            android:title="@string/thermalprofile_auto_mode_note"
-            android:selectable="false"
-            android:enabled="false" />
-
     </PreferenceCategory>
+
+    <com.android.settingslib.widget.FooterPreference
+        android:key="thermal_auto_mode_note"
+        android:title="@string/thermalprofile_auto_mode_note"
+        android:selectable="false" />
 
 </PreferenceScreen>
