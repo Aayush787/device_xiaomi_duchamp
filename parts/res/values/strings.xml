@@ -19,10 +19,16 @@
     <!-- Thermal Profile -->
     <string name="thermalprofile_title">Thermal profile</string>
     <string name="thermalprofile_summary">Manage CPU/GPU thermal behaviour</string>
+    <string name="thermalprofile_category_profiles">Profiles</string>
+    <string name="thermalprofile_category_automation">Automation</string>
     <string name="thermalprofile_default">Balanced</string>
+    <string name="thermalprofile_default_summary">Optimal balance between daily performance and thermals</string>
     <string name="thermalprofile_performance">Performance</string>
+    <string name="thermalprofile_performance_summary">Prioritize peak CPU and GPU clock speeds</string>
     <string name="thermalprofile_battery">Battery Saver</string>
+    <string name="thermalprofile_battery_summary">Limit power draw to reduce heat and extend battery life</string>
     <string name="thermalprofile_game">Game</string>
+    <string name="thermalprofile_game_summary">Sustained boost frequencies and touch responsiveness</string>
     <string name="thermalprofile_unknown">Unknown</string>
     <string name="thermalprofile_auto_mode_title">Enable Auto Mode</string>
     <string name="thermalprofile_auto_mode_summary">Automatically switch to Battery Saver mode when screen turns off and restore previous mode when screen turns on.</string>
@@ -35,8 +41,12 @@
     <string name="turbo_charge_summary">Enable Charge Speed Limit for different charging modes up to 67W</string>
     <string name="turbo_charge_current_pref_title">Charging wattage</string>
     <string name="turbo_mode_one">18W</string>
+    <string name="turbo_mode_one_summary">Slow charging • Minimal battery heat</string>
     <string name="turbo_mode_two">30W</string>
+    <string name="turbo_mode_two_summary">Balanced charging speed and temperature</string>
     <string name="turbo_mode_three">67W</string>
+    <string name="turbo_mode_three_summary">Maximum HyperCharge speed</string>
+    <string name="turbo_charge_footer_note">Lower charging wattages reduce heat generation and help preserve long-term battery health.</string>
     <string name="turbo_charge_tile_label">Charge Speed Limit</string>
     <string name="turbo_charge_tile_content_description">Toggle Charge Speed Limit</string>
 </resources>
