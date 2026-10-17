@@ -22,19 +22,19 @@
         android:key="turbo_current_category"
         android:title="@string/turbo_charge_current_pref_title">
 
-        <com.android.settingslib.widget.SelectorWithWidgetPreference
+        <com.xiaomi.settings.utils.CardSelectorPreference
             android:key="turbo_mode_18w"
             android:title="@string/turbo_mode_one"
             android:summary="@string/turbo_mode_one_summary"
             android:persistent="false" />
 
-        <com.android.settingslib.widget.SelectorWithWidgetPreference
+        <com.xiaomi.settings.utils.CardSelectorPreference
             android:key="turbo_mode_30w"
             android:title="@string/turbo_mode_two"
             android:summary="@string/turbo_mode_two_summary"
             android:persistent="false" />
 
-        <com.android.settingslib.widget.SelectorWithWidgetPreference
+        <com.xiaomi.settings.utils.CardSelectorPreference
             android:key="turbo_mode_67w"
             android:title="@string/turbo_mode_three"
             android:summary="@string/turbo_mode_three_summary"
