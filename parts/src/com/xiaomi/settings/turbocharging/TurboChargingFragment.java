@@ -18,6 +18,8 @@ package com.xiaomi.settings.turbocharging;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import androidx.preference.Preference;
@@ -53,6 +55,7 @@ public class TurboChargingFragment extends PreferenceFragment implements
     private static final String VAL_30W = "7000000";
     private static final String VAL_67W = "22000000";
 
+    private final Handler mHandler = new Handler(Looper.getMainLooper());
     private MainSwitchPreference mTurboEnabled;
     private PreferenceCategory mCurrentCategory;
     private SelectorWithWidgetPreference mMode18W;
@@ -78,7 +81,10 @@ public class TurboChargingFragment extends PreferenceFragment implements
         mMode30W.setOnClickListener(this);
         mMode67W.setOnClickListener(this);
 
-        mCurrentCategory.setEnabled(mTurboEnabled.isChecked());
+        boolean isEnabled = mTurboEnabled.isChecked();
+        mMode18W.setEnabled(isEnabled);
+        mMode30W.setEnabled(isEnabled);
+        mMode67W.setEnabled(isEnabled);
 
         String currentValue = prefs.getString(PREF_TURBO_CURRENT, VAL_67W);
         updateRadioButtons(currentValue);
@@ -88,14 +94,17 @@ public class TurboChargingFragment extends PreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mTurboEnabled) {
             boolean enabled = (boolean) newValue;
-            mCurrentCategory.setEnabled(enabled);
-            PreferenceManager.getDefaultSharedPreferences(getActivity())
-                    .edit()
-                    .putBoolean(PREF_TURBO_ENABLED, enabled)
-                    .apply();
+            if (mTurboEnabled.isChecked() == enabled) {
+                return true;
+            }
 
-            // Always update the charge current when the toggle changes
-            updateChargeCurrent();
+            mHandler.removeCallbacksAndMessages(null);
+            mHandler.post(() -> {
+                if (mMode18W != null) mMode18W.setEnabled(enabled);
+                if (mMode30W != null) mMode30W.setEnabled(enabled);
+                if (mMode67W != null) mMode67W.setEnabled(enabled);
+                updateChargeCurrent(enabled);
+            });
 
             return true;
         }
@@ -121,7 +130,7 @@ public class TurboChargingFragment extends PreferenceFragment implements
         updateRadioButtons(value);
 
         // Update the charge current when the option is changed
-        updateChargeCurrent();
+        updateChargeCurrent(mTurboEnabled.isChecked());
     }
 
     private void updateRadioButtons(String currentValue) {
@@ -130,8 +139,7 @@ public class TurboChargingFragment extends PreferenceFragment implements
         mMode67W.setChecked(VAL_67W.equals(currentValue));
     }
 
-    private void updateChargeCurrent() {
-        boolean turboEnabled = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean(PREF_TURBO_ENABLED, false);
+    private void updateChargeCurrent(boolean turboEnabled) {
         Log.i(TAG, "isTurbo=" + turboEnabled);
         String defaultValue = "21000000";
         if (turboEnabled) {
