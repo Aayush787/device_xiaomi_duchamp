@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/core_control_title">
+
+    <com.xiaomi.settings.utils.CardSwitchPreference
+        android:key="core_control_enabled"
+        android:title="@string/core_control_enable_title"
+        android:persistent="false" />
+
+    <PreferenceCategory
+        android:key="core_control_small_category"
+        android:title="@string/core_control_small_cores">
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu0"
+            android:title="@string/core_control_core_1"
+            android:persistent="false" />
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu1"
+            android:title="@string/core_control_core_2"
+            android:persistent="false" />
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu2"
+            android:title="@string/core_control_core_3"
+            android:persistent="false" />
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu3"
+            android:title="@string/core_control_core_4"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="core_control_big_category"
+        android:title="@string/core_control_big_cores">
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu4"
+            android:title="@string/core_control_core_5"
+            android:persistent="false" />
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu5"
+            android:title="@string/core_control_core_6"
+            android:persistent="false" />
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu6"
+            android:title="@string/core_control_core_7"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="core_control_prime_category"
+        android:title="@string/core_control_prime_core">
+
+        <com.xiaomi.settings.utils.CardSwitchPreference
+            android:key="core_cpu7"
+            android:title="@string/core_control_core_8"
+            android:persistent="false" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
