@@ -35,6 +35,22 @@
     <string name="thermalprofile_auto_mode_note">Note: Higher Boost frequencies (GPU over 740MHz and CPU boost frequencies) are available only in Game and Performance mode.</string>
     <string name="thermalprofile_current_mode">Current mode</string>
 
+    <!-- Core Control -->
+    <string name="core_control_title">Core Control</string>
+    <string name="core_control_summary">Manually enable or disable individual CPU cores</string>
+    <string name="core_control_enable_title">Enable Core Control</string>
+    <string name="core_control_small_cores">Small Cores</string>
+    <string name="core_control_big_cores">Big Cores</string>
+    <string name="core_control_prime_core">Prime Core</string>
+    <string name="core_control_core_1">Core 1</string>
+    <string name="core_control_core_2">Core 2</string>
+    <string name="core_control_core_3">Core 3</string>
+    <string name="core_control_core_4">Core 4</string>
+    <string name="core_control_core_5">Core 5</string>
+    <string name="core_control_core_6">Core 6</string>
+    <string name="core_control_core_7">Core 7</string>
+    <string name="core_control_core_8">Core 8</string>
+
     <!-- Charge Speed Limit -->
     <string name="turbo_charge_title">Charge Speed Limit</string>
     <string name="turbo_enable_title">Enable Charge Speed Limit</string>
