@@ -15,6 +15,7 @@ import androidx.preference.PreferenceManager
 import androidx.preference.SwitchPreferenceCompat
 import com.android.settingslib.widget.SelectorWithWidgetPreference
 import com.xiaomi.settings.R
+import com.xiaomi.settings.corecontrol.CoreControlProfilePolicy
 import com.xiaomi.settings.utils.FileUtils
 
 class ThermalProfileFragment : PreferenceFragment(),
@@ -90,7 +91,15 @@ class ThermalProfileFragment : PreferenceFragment(),
 
     private fun selectProfile(profile: Int) {
         FileUtils.writeLine(THERMAL_PROFILE_PATH, profile)
-        mSharedPrefs.edit().putString(PREF_THERMAL_PROFILE, profile.toString()).apply()
+
+        activity?.let {
+            CoreControlProfilePolicy.applyForProfile(it, profile)
+        }
+
+        mSharedPrefs.edit()
+            .putString(PREF_THERMAL_PROFILE, profile.toString())
+            .apply()
+
         updateUi(profile)
     }
 

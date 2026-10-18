@@ -12,6 +12,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
+import com.xiaomi.settings.corecontrol.CoreControlProfilePolicy
 import com.xiaomi.settings.utils.FileUtils
 
 class ThermalAutoModeReceiver : BroadcastReceiver() {
@@ -27,20 +28,40 @@ class ThermalAutoModeReceiver : BroadcastReceiver() {
                 prefs.edit()
                     .putString(PREF_PROFILE_BEFORE_SLEEP, current.toString())
                     .apply()
-                applyProfile(prefs, ThermalProfileFragment.THERMAL_PROFILE_MBATTERY)
+                applyProfile(
+                    context,
+                    prefs,
+                    ThermalProfileFragment.THERMAL_PROFILE_MBATTERY
+                )
             }
             Intent.ACTION_SCREEN_ON -> {
                 val restored = prefs.getString(
                     PREF_PROFILE_BEFORE_SLEEP,
                     ThermalProfileFragment.THERMAL_PROFILE_DEFAULT.toString()
                 )?.toIntOrNull() ?: ThermalProfileFragment.THERMAL_PROFILE_DEFAULT
-                applyProfile(prefs, restored)
+                applyProfile(context, prefs, restored)
             }
         }
     }
 
-    private fun applyProfile(prefs: SharedPreferences, profile: Int) {
-        FileUtils.writeLine(ThermalProfileFragment.THERMAL_PROFILE_PATH, profile)
+    private fun applyProfile(
+        context: Context,
+        prefs: SharedPreferences,
+        profile: Int
+    ) {
+        val previousProfile = FileUtils.readLineInt(
+            ThermalProfileFragment.THERMAL_PROFILE_PATH
+        )
+
+        FileUtils.writeLine(
+            ThermalProfileFragment.THERMAL_PROFILE_PATH,
+            profile
+        )
+
+        if (previousProfile != profile) {
+            CoreControlProfilePolicy.applyForProfile(context, profile)
+        }
+
         prefs.edit()
             .putString(ThermalProfileFragment.PREF_THERMAL_PROFILE, profile.toString())
             .apply()

@@ -13,21 +13,28 @@ import androidx.preference.SwitchPreferenceCompat
 import com.xiaomi.settings.R
 import com.xiaomi.settings.utils.FileUtils
 
-class CoreControlFragment : PreferenceFragment(),
-    Preference.OnPreferenceChangeListener {
+class CoreControlFragment : PreferenceFragment(), Preference.OnPreferenceChangeListener {
 
     private lateinit var mSharedPrefs: SharedPreferences
     private lateinit var mEnableSwitch: SwitchPreferenceCompat
     private val mCorePrefs = linkedMapOf<Int, SwitchPreferenceCompat>()
 
-    override fun onCreatePreferences(
-        savedInstanceState: Bundle?,
-        rootKey: String?
-    ) {
+    private val mPrefsListener =
+        SharedPreferences.OnSharedPreferenceChangeListener { _, key ->
+            if (key == CoreControlProfilePolicy.PREF_CORE_STATE_CHANGE) {
+                activity?.runOnUiThread {
+                    if (isAdded && ::mSharedPrefs.isInitialized) {
+                        syncFromSysfs()
+                    }
+                }
+            }
+        }
+
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.core_control_settings, rootKey)
 
-        mSharedPrefs =
-            PreferenceManager.getDefaultSharedPreferences(requireActivity())
+        val hostActivity = activity ?: return
+        mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(hostActivity)
 
         mEnableSwitch = findPreference(PREF_CORE_CONTROL_ENABLED)!!
         mEnableSwitch.isChecked =
@@ -35,9 +42,7 @@ class CoreControlFragment : PreferenceFragment(),
         mEnableSwitch.onPreferenceChangeListener = this
 
         CORE_IDS.forEach { cpu ->
-            val pref =
-                findPreference<SwitchPreferenceCompat>(coreKey(cpu))!!
-
+            val pref = findPreference<SwitchPreferenceCompat>(coreKey(cpu))!!
             pref.onPreferenceChangeListener = this
             mCorePrefs[cpu] = pref
         }
@@ -47,13 +52,22 @@ class CoreControlFragment : PreferenceFragment(),
 
     override fun onResume() {
         super.onResume()
-        syncFromSysfs()
+
+        if (::mSharedPrefs.isInitialized) {
+            mSharedPrefs.registerOnSharedPreferenceChangeListener(mPrefsListener)
+            syncFromSysfs()
+        }
     }
 
-    override fun onPreferenceChange(
-        preference: Preference,
-        newValue: Any?
-    ): Boolean {
+    override fun onPause() {
+        if (::mSharedPrefs.isInitialized) {
+            mSharedPrefs.unregisterOnSharedPreferenceChangeListener(mPrefsListener)
+        }
+
+        super.onPause()
+    }
+
+    override fun onPreferenceChange(preference: Preference, newValue: Any?): Boolean {
         val enabled = newValue as? Boolean ?: return false
 
         if (preference == mEnableSwitch) {
@@ -69,16 +83,15 @@ class CoreControlFragment : PreferenceFragment(),
             return true
         }
 
-        val cpu = mCorePrefs.entries
-            .firstOrNull { it.value == preference }
-            ?.key ?: return false
+        val cpu = mCorePrefs.entries.firstOrNull {
+            it.value == preference
+        }?.key ?: return false
 
         if (!mEnableSwitch.isChecked) {
             return false
         }
 
-        if (
-            cpu in SMALL_CORE_IDS &&
+        if (cpu in SMALL_CORE_IDS &&
             !enabled &&
             onlineSmallCoreCount() <= MIN_SMALL_CORES_ONLINE
         ) {
@@ -96,17 +109,12 @@ class CoreControlFragment : PreferenceFragment(),
     }
 
     private fun syncFromSysfs() {
-        val enabled = mSharedPrefs.getBoolean(
-            PREF_CORE_CONTROL_ENABLED,
-            false
-        )
+        if (!::mSharedPrefs.isInitialized) return
 
+        val enabled = mSharedPrefs.getBoolean(PREF_CORE_CONTROL_ENABLED, false)
         mEnableSwitch.isChecked = enabled
 
-        if (!enabled) {
-            setAllCoresOnline()
-        }
-
+        // Read actual core states without overriding the active thermal profile.
         updateUi(enabled)
     }
 
@@ -116,13 +124,10 @@ class CoreControlFragment : PreferenceFragment(),
         mCorePrefs.forEach { (cpu, pref) ->
             val online = isCoreOnline(cpu)
             pref.isChecked = online
-
             pref.isEnabled = controlEnabled &&
-                (
-                    cpu !in SMALL_CORE_IDS ||
+                (cpu !in SMALL_CORE_IDS ||
                     !online ||
-                    smallOnline > MIN_SMALL_CORES_ONLINE
-                )
+                    smallOnline > MIN_SMALL_CORES_ONLINE)
         }
     }
 
@@ -135,10 +140,7 @@ class CoreControlFragment : PreferenceFragment(),
         }
     }
 
-    private fun setCoreOnline(
-        cpu: Int,
-        online: Boolean
-    ): Boolean {
+    private fun setCoreOnline(cpu: Int, online: Boolean): Boolean {
         val path = coreOnlinePath(cpu)
 
         if (!FileUtils.fileExists(path)) {
@@ -153,9 +155,7 @@ class CoreControlFragment : PreferenceFragment(),
     }
 
     private fun isCoreOnline(cpu: Int): Boolean {
-        return when (
-            FileUtils.readOneLine(coreOnlinePath(cpu))?.trim()
-        ) {
+        return when (FileUtils.readOneLine(coreOnlinePath(cpu))?.trim()) {
             "0" -> false
             "1" -> true
             else -> true
@@ -165,15 +165,11 @@ class CoreControlFragment : PreferenceFragment(),
     private fun coreOnlinePath(cpu: Int): String =
         "/sys/devices/system/cpu/cpu$cpu/online"
 
-    private fun coreKey(cpu: Int): String =
-        "core_cpu$cpu"
+    private fun coreKey(cpu: Int): String = "core_cpu$cpu"
 
     companion object {
-        private const val PREF_CORE_CONTROL_ENABLED =
-            "core_control_enabled"
-
+        private const val PREF_CORE_CONTROL_ENABLED = "core_control_enabled"
         private const val MIN_SMALL_CORES_ONLINE = 2
-
         private val CORE_IDS = 0..7
         private val SMALL_CORE_IDS = 0..3
     }
