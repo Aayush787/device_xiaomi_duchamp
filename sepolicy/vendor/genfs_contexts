@@ -64,3 +64,13 @@ genfscon sysfs /devices/platform/11b72000.i2c/i2c-10/10-0055/power_supply/bms/fa
 genfscon sysfs /class/power_supply/battery/constant_charge_current u:object_r:sysfs_power_supply:s0
 genfscon sysfs /class/power_supply/usb/online u:object_r:sysfs_power_supply:s0
 genfscon sysfs /class/power_supply/bms/fastcharge_mode u:object_r:sysfs_power_supply:s0
+
+# Core Control
+genfscon sysfs /devices/system/cpu/cpu0/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu1/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu2/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu3/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu4/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu5/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu6/online u:object_r:vendor_sysfs_corecontrol:s0
+genfscon sysfs /devices/system/cpu/cpu7/online u:object_r:vendor_sysfs_corecontrol:s0
