@@ -14,6 +14,7 @@ import android.util.Log
 import android.view.Display;
 import android.view.Display.HdrCapabilities;
 import androidx.preference.PreferenceManager
+import com.xiaomi.settings.corecontrol.CoreControlProfilePolicy
 import com.xiaomi.settings.display.ColorService
 import com.xiaomi.settings.thermal.ThermalAutoModeService
 import com.xiaomi.settings.thermal.ThermalProfileFragment
@@ -69,8 +70,20 @@ class BootCompletedReceiver : BroadcastReceiver() {
                 ThermalProfileFragment.PREF_THERMAL_PROFILE,
                 ThermalProfileFragment.THERMAL_PROFILE_DEFAULT.toString()
             )
-        val profile = storedValue?.toIntOrNull() ?: ThermalProfileFragment.THERMAL_PROFILE_DEFAULT
+
+        val profile = storedValue?.toIntOrNull()
+            ?: ThermalProfileFragment.THERMAL_PROFILE_DEFAULT
+
+        val previousProfile = FileUtils.readLineInt(
+            ThermalProfileFragment.THERMAL_PROFILE_PATH
+        )
+
         FileUtils.writeLine(ThermalProfileFragment.THERMAL_PROFILE_PATH, profile)
+
+        if (previousProfile != profile) {
+            CoreControlProfilePolicy.applyForProfile(context, profile)
+        }
+
         if (DEBUG) Log.d(TAG, "Restored thermal profile: $profile")
     }
 

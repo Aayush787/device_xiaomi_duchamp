@@ -11,6 +11,7 @@ import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import androidx.preference.PreferenceManager
 import com.xiaomi.settings.R
+import com.xiaomi.settings.corecontrol.CoreControlProfilePolicy
 import com.xiaomi.settings.utils.FileUtils
 
 class ThermalProfileTileService : TileService() {
@@ -45,6 +46,9 @@ class ThermalProfileTileService : TileService() {
 
     private fun applyProfile(profile: Int) {
         FileUtils.writeLine(THEMRAL_PROFILE_PATH, profile)
+
+        CoreControlProfilePolicy.applyForProfile(this, profile)
+
         PreferenceManager.getDefaultSharedPreferences(this)
             .edit()
             .putString(ThermalProfileFragment.PREF_THERMAL_PROFILE, profile.toString())
