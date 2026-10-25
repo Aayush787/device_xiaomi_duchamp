@@ -1,0 +1,6 @@
+cc_library_shared {
+    name: "libbluetooth_audio_session_aidl_mtk_shim",
+    srcs: ["libbluetooth_audio_session_aidl_shim.cpp"],
+    shared_libs: ["libdl"],
+    vendor: true,
+}
