@@ -90,7 +90,8 @@ $(call soong_config_set_bool,fastbootd,bypass_lock_state,true)
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth-service.mediatek
+    android.hardware.bluetooth-service.mediatek \
+    libbluetooth_audio_session_aidl_mtk_shim
 
 PRODUCT_PACKAGES += \
     android.hardware.bluetooth_le.prebuilt.xml \
