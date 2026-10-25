@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "Clonning Private keys"
-croot && git clone https://github.com/ProjectInfinity-X/vendor_infinity-priv_keys-template vendor/infinity-priv/keys
-cd vendor/infinity-priv/keys
+croot && git clone https://github.com/ProjectInfinity-X/vendor_infinity-priv_keys-template vendor/enchanted/keys
+cd vendor/enchanted/keys
 ./keys.sh
 cd ../../..
 

@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/infinity_duchamp.mk
+    $(LOCAL_DIR)/halcyon_duchamp.mk

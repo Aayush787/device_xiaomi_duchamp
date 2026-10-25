@@ -114,7 +114,7 @@ BOARD_EROFS_PCLUSTER_SIZE := 262144
 PRODUCT_FS_COMPRESSION := 1
 
 BOARD_PRODUCTIMAGE_MINIMAL_PARTITION_RESERVED_SIZE := false
--include vendor/infinity/config/BoardConfigReservedSize.mk
+-include vendor/halcyon/config/BoardConfigReservedSize.mk
 
 TARGET_COPY_OUT_ODM := odm
 TARGET_COPY_OUT_ODM_DLKM := odm_dlkm
