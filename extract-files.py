@@ -39,6 +39,7 @@ lib_fixups: lib_fixups_user_type = {
 
 blob_fixups: blob_fixups_user_type = {
     'vendor/lib64/hw/audio.primary.mediatek.so': blob_fixup()
+        .replace_needed('android.hardware.bluetooth.audio-V3-ndk.so', 'android.hardware.bluetooth.audio-V3-ndk-v34.so')
         .replace_needed('libalsautils.so', 'libalsautils-v34.so')
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so')
         .binary_regex_replace(b'A2dpsuspendonly', b'A2dpSuspended\x00\x00')
@@ -51,10 +52,11 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libaudio_aidl_conversion_common_ndk.so', 'libaudio_aidl_conversion_common_ndk-v34.so'),
 
     'vendor/lib64/android.hardware.bluetooth.audio-impl-mediatek.so': blob_fixup()
+        .replace_needed('android.hardware.bluetooth.audio-V3-ndk.so', 'android.hardware.bluetooth.audio-V3-ndk-v34.so')
         .add_needed('libbluetooth_audio_session_aidl_mtk_shim.so'),
 
-    'vendor/lib64/vendor.mediatek.hardware.bluetooth.audio-V1-ndk.so': blob_fixup()
-        .replace_needed('android.hardware.audio.common-V1-ndk.so', 'android.hardware.audio.common-V2-ndk.so'),
+    'vendor/lib64/libbluetooth_audio_session_aidl_mtk.so': blob_fixup()
+        .replace_needed('android.hardware.bluetooth.audio-V3-ndk.so', 'android.hardware.bluetooth.audio-V3-ndk-v34.so'),
 
     ('vendor/etc/init/hw/init.batterysecret.rc',
      'vendor/etc/init/hw/init.mi_thermald.rc'): blob_fixup()
