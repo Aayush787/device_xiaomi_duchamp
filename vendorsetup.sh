@@ -12,6 +12,12 @@ git fetch https://github.com/Nothing-2A/android_packages_apps_Aperture.git
 git cherry-pick 9509277efc852ad8bdcce204e0d9cfe104b6d190
 cd ../../..
 
+echo "Enable LHDCv5 on non-Qualcomm SoCs"
+cd packages/modules/Bluetooth
+git fetch https://github.com/Aayush787/packages_modules_Bluetooth.git
+git cherry-pick ab432357d1b46c30c20da48b1f993eedccfef16e
+cd ../../..
+
 echo "Provide libbase-v34"
 cd hardware/lineage/compat
 git fetch https://github.com/mt6897-devs/hardware_lineage_compat.git
