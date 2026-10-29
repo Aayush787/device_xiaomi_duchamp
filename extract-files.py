@@ -234,6 +234,9 @@ blob_fixups: blob_fixups_user_type = {
 
     'vendor/bin/mnld': blob_fixup()
         .replace_needed('libmnl.so', 'libmnl-v34.so'),
+
+    'vendor/lib64/liboemcrypto.so': blob_fixup()
+        .add_needed('liboemcrypto_shim.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
