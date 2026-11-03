@@ -10,14 +10,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from device makefile.
 $(call inherit-product, device/xiaomi/duchamp/device.mk)
 
-# Inherit some common LineageOS stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common Halcyon-OS stuff.
+$(call inherit-product, vendor/halcyon/config/common.mk)
 
 PRODUCT_BRAND := POCO
 PRODUCT_DEVICE := duchamp
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := 2311DRK48G
-PRODUCT_NAME := lineage_duchamp
+PRODUCT_NAME := halcyon_duchamp
 
 PRODUCT_CHARACTERISTICS := nosdcard
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
@@ -26,3 +26,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="missi-user 16 BP2A.250605.031.A3 OS3.0.10.0.WNLMIXM release-keys" \
     BuildFingerprint=POCO/duchamp_global/duchamp:16/BP2A.250605.031.A3/OS3.0.10.0.WNLMIXM:user/release-keys \
     DeviceProduct=duchamp_global
+
+# Some Halcyon Flags
+TARGET_SUPPORTS_GOOGLE_RECORDER := true
+WITH_GMS := true
