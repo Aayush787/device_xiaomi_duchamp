@@ -26,3 +26,17 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BuildDesc="missi-user 16 BP2A.250605.031.A3 OS3.0.10.0.WNLMIXM release-keys" \
     BuildFingerprint=POCO/duchamp_global/duchamp:16/BP2A.250605.031.A3/OS3.0.10.0.WNLMIXM:user/release-keys \
     DeviceProduct=duchamp_global
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingChipset="Dimensity 8300 Ultra" \
+    RisingMaintainer="Aayush787"
+
+# Lunch banner maintainer variable
+RISING_MAINTAINER="Aayush787"
+
+# Flags
+RISING_MAINTAINER := Aayush787
+TARGET_ENABLE_BLUR := true
+PRODUCT_NO_CAMERA := false
+WITH_GMS := true
+
