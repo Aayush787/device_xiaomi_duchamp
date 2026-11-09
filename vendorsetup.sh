@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Clonning Private keys"
-croot && git clone https://github.com/ProjectInfinity-X/vendor_infinity-priv_keys-template vendor/lumine-priv/keys
+croot && git clone https://github.com/LumineDroid/platform_vendor_lumine-priv_keys.git vendor/lumine-priv/keys
 cd vendor/lumine-priv/keys
 ./keys.sh
 cd ../../..
